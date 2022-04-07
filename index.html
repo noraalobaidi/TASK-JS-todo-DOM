@@ -12,25 +12,28 @@
 <body>
 
     <div>
-        <h1>Create your task </h1>
+        <h1 class="header">Reminder </h1>
         <!-- KEEP THE SELECT EMPTY. IT WILL BE FILLED BY JS  -->
-        <select id="categories-list" title="All">
+        <select class="category" id="categories-list" title="All" >
         </select>
 
-        <input type="text" name="new-task" id="new-task" placeholder="* Add a new task">
+        <input class="input" type="text" name="new-task" id="new-task" placeholder="* Add a new task">
+        <button class="button"onclick="addTask()">Add</button>
     </div>
 
     <div>
-        <h1>Create your category </h1>
-        <input type="text" name="new-category" id="new-category" placeholder="* Add a new category">
+        <h1 class="header">Create your category </h1>
+        <input class="input" type="text" name="new-category" id="new-category" placeholder="* Add a new category">
+        <button class="button"onclick="addCategory()">Create new category</button>
     </div>
 
     <!-- FILTERING DIV -->
     <div>
-        <h1>filter by category</h1>
+        <h1 class="header">filter by category</h1>
         <!-- KEEP THE SELECT EMPTY. IT WILL BE FILLED BY JS  -->
-        <select id="categories-list-filter" title="All">
+        <select class="category" id="categories-list-filter" title="All">
         </select>
+        <button class="button" onclick="filterTasks()">filter</button>
         <!-- DONE for filtering thing -->
         <div>
             <input type="checkbox" name="done" id="done">
