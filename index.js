@@ -5,15 +5,14 @@ const CATEGORY_FILTER = "categories-list-filter";
 
 let tasks = [];
 let categories = [];
-let doneTasks = [];
 
 // REMOVE ME: SAMPLE FILLING
-tasks = [
-  { id: 0, title: "Game of thrones", category: "Movies", done: false },
-  { id: 1, title: "Toy Story 4", category: "Movies", done: false },
-];
+// tasks = [
+//   { id: 0, title: "Game of thrones", category: "Movies", done: false },
+//   { id: 1, title: "Toy Story 4", category: "Movies", done: false },
+// ];
 
-categories = ["Movies", "Groceries"];
+// categories = ["Movies", "Groceries"];
 // SAMPLE
 // renderCategories(categories, CATEGORY_SELECTOR);
 // renderCategories(categories, CATEGORY_FILTER);
@@ -22,17 +21,40 @@ categories = ["Movies", "Groceries"];
 function taskChecked(taskId, checked) {
   // implement the delete task.
   // You are given the task id
+  //let indexoftask = 0;
+  const selectedCategory = getSelectedCategoryById(CATEGORY_SELECTOR);
   if (checked) {
     tasks.forEach((task) => {
-      if (task[id] === taskId) {
-        let index = indexOf(task);
+      if (task.id === taskId) {
+        task.done = true;
+        // indexoftask = index;
+        // console.log("index", indexoftask);
       }
     });
-    let deletedTask = tasks.splice(index, 1); //removing the task from tasks original list
-    doneTasks.push(deletedTask); //saving a copy
+  } else {
+    {
+      tasks.forEach((task) => {
+        if (task.id === taskId) {
+          task.done = false;
+          // indexoftask = index;
+          // console.log("index", indexoftask);
+        }
+      });
+    }
   }
-  renderTasks(tasks, "tasks-list");
-  console.log(`${checked ? "" : "UN"}CHECKED TASK`, taskId);
+  if (getFilteredDone()) {
+    let checkedtasks = tasks.filter(
+      (task) => task.done === true && task.category === selectedCategory
+    );
+    renderTasks(checkedtasks, "tasks-list");
+  } else {
+    let unChecked = tasks.filter(
+      (task) => task.done === false && task.category === selectedCategory
+    );
+    renderTasks(unChecked, "tasks-list");
+  }
+
+  //console.log(`${checked ? "" : "UN"}CHECKED TASK`, taskId);
 }
 
 function addTask() {
@@ -48,7 +70,7 @@ function addTask() {
   };
   tasks.push(taskObj); ///
   renderTasks(tasks, "tasks-list"); ///
-  alert(`Category: ${selectedCategory} | Task: ${taskTitle}`);
+  //alert(`Category: ${selectedCategory} | Task: ${taskTitle}`);
 }
 
 function addCategory() {
@@ -64,9 +86,20 @@ function filterTasks() {
   const selectedCategory = getSelectedCategoryById(CATEGORY_FILTER);
   const done = getFilteredDone();
   // continue the code here
-  let filtertasks = tasks.filter((task) => task[category] === selectedCategory);
-  renderTasks(filtertasks); ///
+  if (done === true) {
+    let donefiltered = tasks.filter(
+      (task) => task.category === selectedCategory && task.done === true
+    );
+
+    renderTasks(donefiltered, "tasks-list");
+  } else {
+    let filtered = tasks.filter(
+      (task) => task.category === selectedCategory && task.done === false
+    );
+
+    renderTasks(filtered, "tasks-list");
+  }
 
   // REMOVE ME: sample alert
-  alert(`Category: ${selectedCategory} | done: ${done}`);
+  //alert(`Category: ${selectedCategory} | done: ${done}`);
 }
