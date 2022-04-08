@@ -11,7 +11,7 @@ function tasksItemComponent(task) {
                   ${checked} 
                   onchange="taskChecked(${task.id}, this.checked)"
                 />
-                <div style="colorbackground-color:rgb(237, 237, 237);font-size: medium; width:500px;border-radius:20px;font-weight: bold;"className="movie-details">
+                <div style="margin:5px;background-color:rgb(237, 237, 237);font-size: medium; width:500px;border-radius:20px;font-weight: bold;"className="movie-details">
                   <p class="item-category">${task.category}</p>
                   <p class="item-title">${task.title}</p>
                 </div>

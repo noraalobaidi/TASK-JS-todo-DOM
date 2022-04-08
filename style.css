@@ -3,7 +3,7 @@
 }
 
 hr{
-  color:rgb(179, 51, 243);
+
   margin-top: 20px;
 }
 .bg{
@@ -117,9 +117,8 @@ right:200px;
   right: 200px;
 
 }
-.removeFilterButton{
 
-}
+
 .header{
 align-content: center;
 font-size: xx-large;

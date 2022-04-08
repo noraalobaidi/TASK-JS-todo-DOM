@@ -22,7 +22,7 @@ function taskChecked(taskId, checked) {
   // implement the delete task.
   // You are given the task id
   //let indexoftask = 0;
-  const selectedCategory = getSelectedCategoryById(CATEGORY_SELECTOR);
+  const selectedCategory = getSelectedCategoryById(CATEGORY_FILTER);
   if (checked) {
     tasks.forEach((task) => {
       if (task.id === taskId) {
