@@ -42,18 +42,21 @@ function taskChecked(taskId, checked) {
       });
     }
   }
-  if (getFilteredDone()) {
-    let checkedtasks = tasks.filter(
-      (task) => task.done === true && task.category === selectedCategory
-    );
-    renderTasks(checkedtasks, "tasks-list");
-  } else {
-    let unChecked = tasks.filter(
-      (task) => task.done === false && task.category === selectedCategory
-    );
-    renderTasks(unChecked, "tasks-list");
-  }
-
+  /////////bug1
+  // if (getFilteredDone()) {
+  //   let checkedtasks = tasks.filter(
+  //     (task) => task.done === true && task.category === selectedCategory
+  //   );
+  //   renderTasks(checkedtasks, "tasks-list");
+  // } else {
+  //   let unChecked = tasks.filter(
+  //     (task) => task.done === false && task.category === selectedCategory
+  //   );
+  //   renderTasks(unChecked, "tasks-list");
+  // }
+  ///////////
+  let taskschecked = tasks.filter((task) => task.category === selectedCategory);
+  renderTasks(taskschecked, "tasks-list");
   //console.log(`${checked ? "" : "UN"}CHECKED TASK`, taskId);
 }
 
@@ -104,9 +107,7 @@ function filterTasks() {
 
     renderTasks(donefiltered, "tasks-list");
   } else {
-    let filtered = tasks.filter(
-      (task) => task.category === selectedCategory && task.done === false
-    );
+    let filtered = tasks.filter((task) => task.category === selectedCategory);
 
     renderTasks(filtered, "tasks-list");
   }
