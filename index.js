@@ -60,6 +60,7 @@ function taskChecked(taskId, checked) {
 function addTask() {
   const selectedCategory = getSelectedCategoryById(CATEGORY_SELECTOR);
   const taskTitle = getNewTaskText();
+
   // continue the code here
   let idnum = tasks.length; ///
   let taskObj = {
@@ -71,15 +72,25 @@ function addTask() {
   tasks.push(taskObj); ///
   renderTasks(tasks, "tasks-list"); ///
   //alert(`Category: ${selectedCategory} | Task: ${taskTitle}`);
+  document.getElementById("new-task").value = ""; //remove the input value after clicking + button
 }
 
 function addCategory() {
   const newCategory = getNewCategoryText();
+  let newCategorysml = newCategory.toLowerCase();
+  let categoriessml = categories.map((category) => category.toLowerCase());
+  let indx = categoriessml.indexOf(newCategorysml);
+
   // continue the code here
-  categories.push(newCategory); ///
-  renderCategories(categories, CATEGORY_SELECTOR);
-  renderCategories(categories, CATEGORY_FILTER);
-  alert(`New category was added: ${newCategory}`);
+  if (indx < 0) {
+    categories.push(newCategory); ///
+    renderCategories(categories, CATEGORY_SELECTOR);
+    renderCategories(categories, CATEGORY_FILTER);
+    alert(`New category was added: ${newCategory}`);
+  } else {
+    alert(`category is already added: ${newCategory}`);
+  }
+  document.getElementById("new-category").value = ""; //remove input after clicking the button create
 }
 
 function filterTasks() {
@@ -102,4 +113,8 @@ function filterTasks() {
 
   // REMOVE ME: sample alert
   //alert(`Category: ${selectedCategory} | done: ${done}`);
+}
+
+function removeFilter() {
+  renderTasks(tasks, "tasks-list");
 }
