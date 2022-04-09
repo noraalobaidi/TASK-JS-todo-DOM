@@ -9,41 +9,77 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="todo-item">
+<body class="bg">
 
-    <div>
-        <h1 class="header">Reminder </h1>
-        <!-- KEEP THE SELECT EMPTY. IT WILL BE FILLED BY JS  -->
-        <select class="category" id="categories-list" title="All" >
-        </select>
-
-        <input class="input" type="text" name="new-task" id="new-task" placeholder="* Add a new task">
-        <button class="button"onclick="addTask()">Add</button>
-    </div>
-
-    <div>
-        <h1 class="header">Create your category </h1>
-        <input class="input" type="text" name="new-category" id="new-category" placeholder="* Add a new category">
-        <button class="button"onclick="addCategory()">Create new category</button>
-    </div>
-
-    <!-- FILTERING DIV -->
-    <div>
-        <h1 class="header">filter by category</h1>
-        <!-- KEEP THE SELECT EMPTY. IT WILL BE FILLED BY JS  -->
-        <select class="category" id="categories-list-filter" title="All">
-        </select>
-        <button class="button" onclick="filterTasks()">filter</button>
-        <!-- DONE for filtering thing -->
-        <div>
-            <input onclick="filterTasks()"type="checkbox" name="done" id="done">
-            <label for="done">Filter by done</label>
+    <div class="container-fluid" align="center">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="todolist">
+                    To Do List
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span class="createCategoryLabel">Create a new category</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                
+                <input class="createCategoryInput" type="text" name="new-category" id="new-category" placeholder="e.g. School"> 
+                <button class="createbutton"onclick="addCategory()">Create</button>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div  class="box" >
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <select class="droplistTask" id="categories-list" title="All" ><!--droplist category -->
+                        </select>
+                        <input class="inputTask" type="text" name="new-task" id="new-task" placeholder="* Add a new task">
+                        <button class="addTaskButton"onclick="addTask()">+</button>
+                        <hr>
+                    </div>
+                    <div class="col-md-4">
+                        <!-- <input class="input" type="text" name="new-task" id="new-task" placeholder="* Add a new task"> -->
+                    </div>
+                    <div class="col-md-4">
+                   
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                         <span class="filterByCategoryLabel">Filter by category</span>
+                         <select class="droplistFilter" id="categories-list-filter" title="All"></select>
+                         <button class="filterButton" onclick="filterTasks()">filter</button>
+                         
+                    </div>
+                    <div class="col-md-4">
+                        <input class="checkboxDone"onclick="filterTasks()"type="checkbox" name="done" id="done">
+                        <label class="filterbydoneLabel"for="done">Filter by done</label>
+                    </div>
+                    <div class="col-md-4">
+                         
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <div id="tasks-list"></div>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div> 
+                
+            </div>
         </div>
     </div>
-    <hr>
-
-    <!-- KEEP THE DIV EMPTY. IT WILL BE FILLED BY JS  -->
-    <div id="tasks-list"></div>
 
 
 </body>
